@@ -5,18 +5,18 @@ import numpy.linalg
 import matplotlib.pyplot as plt
 import random
 
-G = 50.0# гравитационная постоянная
+G = 50.0# ГЈГ°Г ГўГЁГІГ Г¶ГЁГ®Г­Г­Г Гї ГЇГ®Г±ГІГ®ГїГ­Г­Г Гї
 N = 10
 
-collision_distance = 3.0  # всё-таки это не точки
+collision_distance = 3.0  # ГўГ±Вё-ГІГ ГЄГЁ ГЅГІГ® Г­ГҐ ГІГ®Г·ГЄГЁ
 model_delta_t = 0.01
 time_to_model = 10
 
 class MaterialPoint
-    Материальная точка, движущаяся по двумерной плоскости
+    ГЊГ ГІГҐГ°ГЁГ Г«ГјГ­Г Гї ГІГ®Г·ГЄГ , Г¤ГўГЁГ¦ГіГ№Г ГїГ±Гї ГЇГ® Г¤ГўГіГ¬ГҐГ°Г­Г®Г© ГЇГ«Г®Г±ГЄГ®Г±ГІГЁ
     
     def __init__(self, mass 'float', position 'numpy.array', velocity 'numpy.array')
-        # Аннотации типов по желанию, но могут помочь IDE и компилятору, когда таковые имеются
+        # ГЂГ­Г­Г®ГІГ Г¶ГЁГЁ ГІГЁГЇГ®Гў ГЇГ® Г¦ГҐГ«Г Г­ГЁГѕ, Г­Г® Г¬Г®ГЈГіГІ ГЇГ®Г¬Г®Г·Гј IDE ГЁ ГЄГ®Г¬ГЇГЁГ«ГїГІГ®Г°Гі, ГЄГ®ГЈГ¤Г  ГІГ ГЄГ®ГўГ»ГҐ ГЁГ¬ГҐГѕГІГ±Гї
         self.mass = mass
         self.position = position
         self.velocity = velocity
@@ -26,15 +26,15 @@ class MaterialPoint
         if dist  collision_distance
             return G  dist
         else
-            return -G  dist  3 # будем считать, что отскакивают точки друг от друга резко, но стараться не допускать этого
+            return -G  dist  3 # ГЎГіГ¤ГҐГ¬ Г±Г·ГЁГІГ ГІГј, Г·ГІГ® Г®ГІГ±ГЄГ ГЄГЁГўГ ГѕГІ ГІГ®Г·ГЄГЁ Г¤Г°ГіГЈ Г®ГІ Г¤Г°ГіГЈГ  Г°ГҐГ§ГЄГ®, Г­Г® Г±ГІГ Г°Г ГІГјГ±Гї Г­ГҐ Г¤Г®ГЇГіГ±ГЄГ ГІГј ГЅГІГ®ГЈГ®
     
     def force_induced_by_other(self, other 'MaterialPoint')- 'numpy.array'
         delta_p = other.position - self.position
-        distance = numpy.linalg.norm(delta_p)  # Евклидова норма (по теореме Пифагора)
+        distance = numpy.linalg.norm(delta_p)  # Г…ГўГЄГ«ГЁГ¤Г®ГўГ  Г­Г®Г°Г¬Г  (ГЇГ® ГІГҐГ®Г°ГҐГ¬ГҐ ГЏГЁГґГ ГЈГ®Г°Г )
         force_direction = delta_p  distance
         force = force_direction  self.mass  other.mass  MaterialPoint.gravity_dencity(distance)
         return force
-    
+     
     def advance(self)
         # print(self.position)
         self.position += self.velocity  model_delta_t
