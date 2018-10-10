@@ -3,16 +3,16 @@ import math
 iterations = 20
 
 def my_exp(x):
-    """Вычисление синуса при помощи частичного суммирования ряда Тейлора"""
+    """Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ Г±ГЁГ­ГіГ±Г  ГЇГ°ГЁ ГЇГ®Г¬Г®Г№ГЁ Г·Г Г±ГІГЁГ·Г­Г®ГЈГ® Г±ГіГ¬Г¬ГЁГ°Г®ГўГ Г­ГЁГї Г°ГїГ¤Г  Г’ГҐГ©Г«Г®Г°Г """
     x_pow = x
     multiplier = 1
     partial_sum = x
     for n in range(1, iterations):
-        x_pow *= x  # В цикле постепенно считаем степень
-        multiplier *= 1 / (n)  # (-1)^n и факториал
+        x_pow *= x  # Г‚ Г¶ГЁГЄГ«ГҐ ГЇГ®Г±ГІГҐГЇГҐГ­Г­Г® Г±Г·ГЁГІГ ГҐГ¬ Г±ГІГҐГЇГҐГ­Гј
+        multiplier *= 1 / (n)  # (-1)^n ГЁ ГґГ ГЄГІГ®Г°ГЁГ Г«
         partial_sum += x_pow * multiplier
     
     return partial_sum
 
 print(help(math.sin), math.sin(0.4))
-print(help(my_exp), my_exp(15))
+print(help(my_exp), my_exp(15)) 
