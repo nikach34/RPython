@@ -5,18 +5,18 @@ import numpy.linalg
 import matplotlib.pyplot as plt
 import random
 
-G = 50.0# гравитационная постоянная
+G = 50.0
 N = 10
 
-collision_distance = 3.0  # всё-таки это не точки
+collision_distance = 3.0  
 model_delta_t = 0.01
 time_to_model = 10
 
 class MaterialPoint
-    Материальная точка, движущаяся по двумерной плоскости
+    РњР°С‚РµСЂРёР°Р»СЊРЅР°СЏ С‚РѕС‡РєР°, РґРІРёР¶СѓС‰Р°СЏСЃСЏ РїРѕ РґРІСѓРјРµСЂРЅРѕР№ РїР»РѕСЃРєРѕСЃС‚Рё
     
     def __init__(self, mass 'float', position 'numpy.array', velocity 'numpy.array')
-        # Аннотации типов по желанию, но могут помочь IDE и компилятору, когда таковые имеются
+
         self.mass = mass
         self.position = position
         self.velocity = velocity
@@ -26,11 +26,11 @@ class MaterialPoint
         if dist  collision_distance
             return G  dist
         else
-            return -G  dist  3 # будем считать, что отскакивают точки друг от друга резко, но стараться не допускать этого
+            return -G  dist  3 
     
     def force_induced_by_other(self, other 'MaterialPoint')- 'numpy.array'
         delta_p = other.position - self.position
-        distance = numpy.linalg.norm(delta_p)  # Евклидова норма (по теореме Пифагора)
+        distance = numpy.linalg.norm(delta_p)  # Г…ГўГЄГ«ГЁГ¤Г®ГўГ  Г­Г®Г°Г¬Г  (ГЇГ® ГІГҐГ®Г°ГҐГ¬ГҐ ГЏГЁГґГ ГЈГ®Г°Г )
         force_direction = delta_p  distance
         force = force_direction  self.mass  other.mass  MaterialPoint.gravity_dencity(distance)
         return force
