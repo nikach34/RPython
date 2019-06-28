@@ -19,18 +19,15 @@ def hello_name():
     if request.method == 'GET':
         x=request.args.get('x')
         y=request.args.get('y')
-
     k = ""
-    if x == None or y == None:
+    if (x == None or y == None):
         x = 0
         y = 0
         k = "Ошибка"
-    
-    if k == "":
+    if (k == ""):
         result = str(gcd(int(x), int(y)))
     else:
         result = k
-
     return flask.render_template(
         'gcd.html',
         name=result,
