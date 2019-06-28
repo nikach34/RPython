@@ -8,7 +8,7 @@ app = Flask(__name__, static_folder="static", static_url_path="", template_folde
 
 
 def gcd(x, y):
-    if (b == 0):
+    if (y == 0):
     return x
     else:
     return gcd (x, x % y)
